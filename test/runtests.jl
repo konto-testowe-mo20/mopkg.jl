@@ -16,7 +16,7 @@ svltf = Dict(
             @testset "Epsilon tests" begin
                 for optim in subtypes(SVOptMethod)
                     for tolerance in [1e-2, 1e-4, 1e-6]
-                        @test isapprox(line_optimize(fun, stval; eps=tolerance, method=optim())[1], min[1], atol=tolerance)
+                        @test isapprox(line_optimize(fun, stval; eps=tolerance*0.5, method=optim())[1], min[1], atol=tolerance)
                     end
                 end
             end
