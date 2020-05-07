@@ -20,6 +20,6 @@ function (svhc::SVHillClimb)(f, x0; ϵ, maxiter, dampingfactor=0.5, step=1.0)
             step = -step*dampingfactor
         end
     end
-    return s, fn
+    return fn, s
 end
 
