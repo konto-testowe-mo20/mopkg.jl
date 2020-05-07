@@ -2,6 +2,12 @@ abstract type SVOptMethod end
 
 struct SVHillClimb <: SVOptMethod end
 
+"Finite central difference"
+fdc(f, x; h=1e-5) = (f(x+h/2) - f(x-h/2))/h
+
+"Second order central finite difference"
+sfdc(f, x; h=1e-5) = (f(x+h) - 2f(x) + f(x-h))/h^2
+
 function (svhc::SVHillClimb)(f, x0; ϵ, maxiter, dampingfactor=0.5, step=1.0)
     x, fp = x0, f(x0)
     s, fs = x0 + step, f(x0 + step)
